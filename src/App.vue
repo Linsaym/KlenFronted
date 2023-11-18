@@ -1,36 +1,35 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
 import { onMounted, ref } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
 import axios from "axios";
 
-const name = ref("Ivan");
-onMounted(() => {
-  axios.get("http://127.0.0.1:8000/customer").then((r) => {
-    console.log(r.data.name);
-    name.value = r.data.name;
-  });
-});
+const count = ref(1);
+let min = ref(0);
+let sec = ref(0);
+
+setInterval(() => {
+  sec.value++;
+  if (sec.value > 59) {
+    sec.value = 0;
+    min.value++;
+  }
+}, 1000);
+
+function times() {
+  count.value *= 2;
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">{{ name }}</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div>
+    <button @click="times()">increment</button>
+    <button @click="count--">decrement</button>
+    <p>{{ count }}</p>
+    <p style="color: rebeccapurple">{{ min }}:{{ sec }}</p>
+    <p style="color: rebeccapurple"></p>
+  </div>
 </template>
 
-<style scoped>
+<style>
 header {
   line-height: 1.5;
   max-height: 100vh;
