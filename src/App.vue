@@ -1,31 +1,10 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import axios from "axios";
-
-const count = ref(1);
-let min = ref(0);
-let sec = ref(0);
-
-setInterval(() => {
-  sec.value++;
-  if (sec.value > 59) {
-    sec.value = 0;
-    min.value++;
-  }
-}, 1000);
-
-function times() {
-  count.value *= 2;
-}
 </script>
 
 <template>
   <div>
-    <button @click="times()">increment</button>
-    <button @click="count--">decrement</button>
-    <p>{{ count }}</p>
-    <p style="color: rebeccapurple">{{ min }}:{{ sec }}</p>
-    <p style="color: rebeccapurple"></p>
   </div>
 </template>
 
@@ -34,7 +13,11 @@ header {
   line-height: 1.5;
   max-height: 100vh;
 }
-
+button{
+  width: 70px;
+  height: 30px;
+  border: 3px solid rgb(74, 141, 74);
+}
 .logo {
   display: block;
   margin: 0 auto 2rem;
