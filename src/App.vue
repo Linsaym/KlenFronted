@@ -1,78 +1,78 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import axios from "axios";
+import { ref } from "vue";
+
+import Diolog from "@/components/Diolog.vue";
+
+const EatInput = ref("");
+const desserts = ref([
+  {
+    name: "Frozen Yogurt",
+    calories: 159,
+  },
+  {
+    name: "Ice cream sandwich",
+    calories: 237,
+  },
+]);
+
+function addFood() {
+  desserts.value = [...desserts.value, { name: EatInput, calories: 100 }];
+}
 </script>
 
 <template>
-  <div>
-    123
+  <div class="main">
+    <div>
+      <a href="https://vuetifyjs.com/en/components/buttons/">
+        <v-btn>Сайт Vuetify</v-btn>
+      </a>
+    </div>
+    <div class="block">
+      <Diolog
+        text="у каждого компоненты из Vuetify есть много стилей(их можно задавать через пропсы). Всех их можно посмотреть у них на сайте https://vuetifyjs.com/en/components/all/#containment"
+        name="советик :)"
+      />
+    </div>
+    <div>
+      <v-table height="300px">
+        <thead>
+          <tr>
+            <th class="text-left">Name</th>
+            <th class="text-left">Calories</th>
+            <th class="text-left">Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in desserts" :key="item.name">
+            <td>{{ item.name }}</td>
+            <td>{{ item.calories }}</td>
+            <td>100+</td>
+          </tr>
+        </tbody>
+      </v-table>
+      <div>
+        <v-text-field v-model="EatInput" label="Название еды" hide-details="auto"></v-text-field>
+        <v-btn @click="addFood">Добавить</v-btn>
+      </div>
+      <div class="ma-4" style="text-align: center">
+        <h1 class="text-h2">Нажав сюда можно смотреть код компонента</h1>
+        <img src="@/assets/img.png" alt="" />
+        <div class="text-amber-lighten-1 text-h4">
+          Так же не стоит забывать что Vuetify предлагает свои стили, у него уже есть заготовленные
+          классы
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<style>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-button{
-  width: 70px;
-  height: 30px;
-  border: 3px solid rgb(74, 141, 74);
-}
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+<style scoped>
+.block {
+  margin: 10px 0;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.main {
+  display: flex;
+  flex-direction: column;
 }
 </style>
