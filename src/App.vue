@@ -1,68 +1,200 @@
-<script setup>
-import { ref } from "vue";
+<script >
+// import { ref } from "vue";
 
-import Diolog from "@/components/Diolog.vue";
+// const input_content = ref("");
+// const providers = ref([
+//   {
+//     code: 1,
+//     name: "Агро миллион",
+//     description: "Предлагаем саженцы и рассаду клубники, лучших сортов питомника",
+//     phone: "+791344833**",
+//     email: "zakaz@agromilli**.ru",
+//     region: "Красноярский край",
+//     locality: "Красноярск",
+//     address: "Затонская 4",
+//     date: "23.11.2023"
+//   }
+// ]);
 
-const EatInput = ref("");
-const desserts = ref([
-  {
-    name: "Frozen Yogurt",
-    calories: 159,
-  },
-  {
-    name: "Ice cream sandwich",
-    calories: 237,
-  },
-]);
+// function addProvider() {
+//   providers.value = [...providers.value, { name: input_content }];
+//   console.log('rabotaet')
+// }
 
-function addFood() {
-  desserts.value = [...desserts.value, { name: EatInput, calories: 100 }];
-}
+export default {
+  data: () => ({
+      first: null,
+      last: null,
+      email: null,
+      password: null,
+      terms: false,
+    }),
+    data () {
+      return {
+        search: '',
+        headers: [
+          {
+            align: 'start',
+            key: 'name',
+            sortable: false,
+            title: 'Поставщик',
+          },
+          { key: 'code', title: 'Код поставщика' },
+          { key: 'name', title: 'Поставщик' },
+          { key: 'description', title: 'Описание' },
+          { key: 'phone', title: 'Телефон' },
+          { key: 'email', title: 'Почта' },
+          { key: 'region', title: 'Регион, область' },
+          { key: 'locality', title: 'Населенный пункт' },
+          { key: 'address', title: 'Адрес' },
+          { key: 'date', title: 'Дата парсинга' },
+        ],
+        providers: [
+          {
+            code:  1,
+            name: 'Агро миллион',
+            description: 'Предлагаем саженцы и рассаду клубники, лучших сортов питомника',
+            phone: '+791344833**',
+            email: 'zakaz@agromilli**.ru',
+            region: 'Красноярский край',
+            locality: 'Красноярск',
+            address: 'Затонская 4',
+            date: '23.11.2023',
+          },
+          {
+            code:  2,
+            name: 'Питомник растений Малиновский',
+            description: 'Оптовая продажа саженцев различных растений',
+            phone: '+796184695**',
+            email: 'malin**@mail.ru',
+            region: 'Новосибирская область',
+            locality: 'Новосибирск',
+            address: 'Новосибирская 67',
+            date: '24.11.2023',
+          }
+        ]
+      }
+    }
+  }
 </script>
 
 <template>
   <div class="main">
-    <div>
-      <a href="https://vuetifyjs.com/en/components/buttons/">
-        <v-btn>Сайт Vuetify</v-btn>
-      </a>
-    </div>
-    <div class="block">
-      <Diolog
-        text="у каждого компоненты из Vuetify есть много стилей(их можно задавать через пропсы). Всех их можно посмотреть у них на сайте https://vuetifyjs.com/en/components/all/#containment"
-        name="советик :)"
-      />
-    </div>
-    <div>
+
+    <v-card flat title="Поиск поставщика">
+      <template v-slot:text>
+        <v-text-field v-model="search" label="Поиск" prepend-inner-icon="mdi-magnify" single-line variant="outlined" hide-details></v-text-field>
+      </template>
+      <v-data-table :headers="headers" :items="providers" :search="search"></v-data-table>
+    </v-card>
+    <v-text-field v-model="input_content" label="Поствщик" hide-details="auto"></v-text-field>
+    <v-btn @click="addProvider">Добавить</v-btn>
+    <!-- <div>
       <v-table height="300px">
         <thead>
           <tr>
-            <th class="text-left">Name</th>
-            <th class="text-left">Calories</th>
-            <th class="text-left">Age</th>
+            <th class="text-left">Код поставщика</th>
+            <th class="text-left">Поставщик</th>
+            <th class="text-left">Описание</th>
+            <th class="text-left">Телефон</th>
+            <th class="text-left">Почта</th>
+            <th class="text-left">Регион, область</th>
+            <th class="text-left">Населенный пункт</th>
+            <th class="text-left">Адрес</th>
+            <th class="text-left">Дата парсинга</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in desserts" :key="item.name">
+          <tr v-for="item in providers" :key="item.name">
+            <td>{{ item.code }}</td>
             <td>{{ item.name }}</td>
-            <td>{{ item.calories }}</td>
-            <td>100+</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.region }}</td>
+            <td>{{ item.locality }}</td>
+            <td>{{ item.address }}</td>
+            <td>{{ item.date }}</td>
           </tr>
         </tbody>
       </v-table>
-      <div>
-        <v-text-field v-model="EatInput" label="Название еды" hide-details="auto"></v-text-field>
-        <v-btn @click="addFood">Добавить</v-btn>
-      </div>
-      <div class="ma-4" style="text-align: center">
-        <h1 class="text-h2">Нажав сюда можно смотреть код компонента</h1>
-        <img src="@/assets/img.png" alt="" />
-        <div class="text-amber-lighten-1 text-h4">
-          Так же не стоит забывать что Vuetify предлагает свои стили, у него уже есть заготовленные
-          классы
-        </div>
-      </div>
-    </div>
+      <div> -->
+        <v-card
+    class="mx-auto"
+    max-width="344"
+    title="Запись поставщика"
+  >
+    <v-container>
+      <v-text-field
+        v-model="first"
+        color="primary"
+        label="Код поставщика"
+        variant="underlined"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="last"
+        color="primary"
+        label="Поставщик"
+        variant="underlined"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="email"
+        color="primary"
+        label="Описание"
+        variant="underlined"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="email"
+        color="primary"
+        label="Телефон"
+        variant="underlined"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="email"
+        color="primary"
+        label="Почта"
+        variant="underlined"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="password"
+        color="primary"
+        label="Населенный пункт"
+        variant="underlined"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="password"
+        color="primary"
+        label="Адрес"
+        variant="underlined"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="password"
+        color="primary"
+        label="Дата парсинга"
+        variant="underlined"
+      ></v-text-field>
+
+  
+    </v-container>
+
+    <v-divider></v-divider>
+
+    <v-card-actions>
+      <v-spacer></v-spacer>
+
+      <v-btn color="success">
+        Записать
+        <v-icon icon="mdi-chevron-right" end></v-icon>
+      </v-btn>
+    </v-card-actions>
+  </v-card>
   </div>
 </template>
 
