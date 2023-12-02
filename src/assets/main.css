@@ -1,6 +1,7 @@
 @import './base.css';
 @import "@mdi/font/css/materialdesignicons.css";
 @import "@fortawesome/fontawesome-free/css/all.css";
+@import '@vuepic/vue-datepicker/dist/main.css';
 
 #app {
     max-width: 1280px;
