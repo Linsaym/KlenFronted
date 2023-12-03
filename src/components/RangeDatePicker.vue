@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="rangePicker">
     <v-container>
       <v-row>
         <v-col>
