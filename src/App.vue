@@ -1,13 +1,24 @@
 <template>
-  <sideBar></sideBar>
-  <router-view></router-view>
+  <side-bar></side-bar>
+  <div class="container">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import sideBar from './views/SideBar.vue'
+import SideBar from '@/components/SideBar.vue'
 
 export default {
-  components: { sideBar }
+  components: { SideBar }
 }
 
 </script>
+<style>
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+</style>

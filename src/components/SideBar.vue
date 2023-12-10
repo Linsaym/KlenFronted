@@ -1,7 +1,7 @@
 <template>
-    <v-card>
+  <v-card>
     <v-layout>
-      <v-navigation-drawer expand-on-hover rail>
+      <v-navigation-drawer expand-on-hover rail style="z-index: 9999; background-color: white;">
         <v-list>
           <v-list-item prepend-avatar="https://randomuser.me/api/portraits/lego/8.jpg" title="Petrova Yulya"
             subtitle="petrova_you@mail.ru"></v-list-item>
@@ -21,8 +21,8 @@
   </v-card>
 </template>
 
-<script> 
-    export default {
-        name: 'SideBar'
-    }
+<script>
+export default {
+  name: 'SideBar'
+}
 </script>
