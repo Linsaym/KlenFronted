@@ -2,9 +2,7 @@
   <main>
     <div>
       <div>
-        <router-link to="products">
-          <div>asd</div>
-        </router-link>
+        
       </div>
       <div class="topBlock">
         <v-card class="flex-1-1 pa-8">
