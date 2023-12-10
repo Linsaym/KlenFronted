@@ -20,5 +20,7 @@ export default {
   padding: 2rem;
 
   font-weight: normal;
+  position: relative;
+  z-index: -1;
 }
 </style>
