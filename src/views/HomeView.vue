@@ -2,41 +2,17 @@
   <main>
     <div>
       <div>
-        
+
       </div>
       <div class="topBlock">
         <v-card class="flex-1-1 pa-8">
-          <v-autocomplete
-            v-model="product_id"
-            label="Товар"
-            :items="products"
-            item-value="id"
-            item-title="name"
-          />
-          <v-text-field
-            v-model="count"
-            label="Количество"
-            maxlength="4"
-            :rules="[rules.required, rules.number]"
-          />
+          <v-autocomplete v-model="product_id" label="Товар" :items="products" item-value="id" item-title="name" />
+          <v-text-field v-model="count" label="Количество" maxlength="4" :rules="[rules.required, rules.number]" />
           <v-btn class="mt-3" variant="tonal" @click="postSale">Добавить продажу</v-btn>
         </v-card>
       </div>
-      <vue-date-picker
-        style="width: 100%"
-        v-model="date"
-        model-auto
-        range
-        :enable-time-picker="false"
-        preview-format
-      />
-      <v-data-table
-        v-model:expanded="expanded"
-        :headers="headers"
-        :items="sales"
-        item-value="id"
-        show-expand
-      >
+      <vue-date-picker style="width: 100%" v-model="date" model-auto range :enable-time-picker="false" preview-format />
+      <v-data-table v-model:expanded="expanded" :headers="headers" :items="sales" item-value="id" show-expand>
         <template v-slot:item.created_at="{ item }">
           <div>{{ getFormatedDate(item.created_at) }}</div>
         </template>
@@ -66,6 +42,7 @@
 </template>
 <script>
 import axios from "axios";
+import repository from "@/plugins/axios"
 
 export default {
   data() {
@@ -126,10 +103,12 @@ export default {
     },
   },
   mounted() {
-    this.getProducts();
-    this.getSales();
+    // this.getProducts();
+    // this.getSales();
+    console.log(repository)
   },
 };
+
 </script>
 <style scoped>
 .topBlock {

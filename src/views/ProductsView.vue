@@ -9,12 +9,7 @@
 
       <v-text-field v-model="newProduct.height" v-if="isPlant" label="Высота"></v-text-field>
 
-      <v-select
-        v-model="newProduct.pot"
-        v-if="isPlant"
-        :items="items"
-        label="Тип горшка"
-      ></v-select>
+      <v-select v-model="newProduct.pot" v-if="isPlant" :items="items" label="Тип горшка"></v-select>
 
       <v-btn @click="send" class="me-4" type="submit">Отправить</v-btn>
 
@@ -72,7 +67,8 @@ export default {
     },
   },
   mounted() {
-    this.getProducts();
+    // this.getProducts();
+    axios.get('/345');
   },
 };
 </script>
