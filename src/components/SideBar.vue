@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-layout>
-      <v-navigation-drawer expand-on-hover rail mobile-breakpoint="sm" style="z-index: 9999; background-color: white;">
+      <v-navigation-drawer expand-on-hover rail>
         <v-list>
           <v-list-item prepend-avatar="https://randomuser.me/api/portraits/lego/8.jpg" title="Petrova Yulya"
             subtitle="petrova_you@mail.ru"></v-list-item>
@@ -14,7 +14,8 @@
               value="myfiles"></v-list-item></router-link>
           <router-link to="/"><v-list-item prepend-icon="mdi-account-multiple" title="Main page"
               value="shared"></v-list-item></router-link>
-          <v-list-item prepend-icon="mdi-star" title="Starred" value="starred"></v-list-item>
+          <router-link to="tasks"><v-list-item prepend-icon="mdi-star" title="Tasks"
+              value="starred"></v-list-item></router-link>
         </v-list>
       </v-navigation-drawer>
     </v-layout>

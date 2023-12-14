@@ -105,7 +105,7 @@ export default {
   mounted() {
     // this.getProducts();
     // this.getSales();
-    console.log(repository)
+    repository.get()
   },
 };
 
