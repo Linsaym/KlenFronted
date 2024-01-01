@@ -16,6 +16,8 @@
               value="shared"></v-list-item></router-link>
           <router-link to="tasks"><v-list-item prepend-icon="mdi-star" title="Tasks"
               value="starred"></v-list-item></router-link>
+          <router-link to="task"><v-list-item prepend-icon="mdi-star" title="One Task"
+              value="starred"></v-list-item></router-link>
         </v-list>
       </v-navigation-drawer>
     </v-layout>

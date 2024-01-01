@@ -1,6 +1,6 @@
 <template>
-  <side-bar></side-bar>
   <div class="container">
+    <side-bar style="z-index: 100;position: absolute"></side-bar>
     <router-view></router-view>
   </div>
 </template>
@@ -21,6 +21,6 @@ export default {
 
   font-weight: normal;
   position: relative;
-  z-index: -1;
+  z-index: 0;
 }
 </style>
